@@ -7,7 +7,7 @@ summary = json.load(open("summary.json"))
 W, H = 1600, 900
 im = Image.new("RGB", (W, H), (14, 17, 23)); d = ImageDraw.Draw(im)
 def font(sz, bold=False):
-    for p in (["/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf"] if bold else []) + ["/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"]:
+    for p in (["/usr/share/fonts/truetype/liberation/LiberationMono-Bold.ttf"] if bold else []) + ["/usr/share/fonts/truetype/liberation/LiberationMono-Regular.ttf"]:
         try: return ImageFont.truetype(p, sz)
         except Exception: pass
     return ImageFont.load_default()
@@ -19,7 +19,7 @@ hdr = ["wallet", "eth_paid_out", "eth_earned", "v1_nfts_held"]
 xs = [50, 760, 1010, 1260]
 for x, h in zip(xs, hdr): d.text((x, y), h, fill=(255, 200, 90), font=font(24, True))
 y += 40
-for r in rows[1:24]:
+for r in rows[1:22]:
     vals = [r[0], f"{float(r[1]):.4f}", f"{float(r[2]):.4f}", r[3]]
     for x, v in zip(xs, vals): d.text((x, y), v, fill=(220, 220, 220), font=font(22))
     y += 28
